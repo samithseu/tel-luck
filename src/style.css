@@ -8,11 +8,11 @@
   --clr-fg: light-dark(theme(color.zinc.800), theme(color.zinc.200));
   --clr-bg: light-dark(theme(color.zinc.100), theme(color.zinc.900));
   --clr-primary: light-dark(theme(color.black), theme(color.white));
-  --clr-excellent: light-dark(theme(color.green.600), theme(color.green.500));
-  --clr-good: light-dark(theme(color.blue.600), theme(color.blue.500));
+  --clr-excellent: light-dark(theme(color.green.600), theme(color.green.400));
+  --clr-good: light-dark(theme(color.blue.600), theme(color.blue.400));
   --clr-normal: var(--clr-primary);
-  --clr-bad: light-dark(theme(color.orange.600), theme(color.orange.500));
-  --clr-terrible: light-dark(theme(color.red.600), theme(color.red.500));
+  --clr-bad: light-dark(theme(color.orange.600), theme(color.orange.400));
+  --clr-terrible: light-dark(theme(color.red.600), theme(color.red.400));
 }
 @theme inline {
   --font-sans:

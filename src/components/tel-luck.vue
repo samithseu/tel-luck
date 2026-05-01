@@ -64,6 +64,7 @@ onMounted(async () => {
           maxlength="11"
           placeholder="សូមបញ្ចូលលេខទូរសព្ទ (6 ខ្ទង់ឡើង)"
           aria-label="Phone number"
+          @input="phone = phone.replace(/[^0-9]/g, '')"
         />
       </div>
 
