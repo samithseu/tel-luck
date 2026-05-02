@@ -3,7 +3,7 @@
 Telephone Luck (Phone Number Fortune Teller).
 
 > [!NOTE]
-> This is just a toy project created just for hosting nuxt on github pages!
+> _This is just a toy project created just for hosting nuxt on github pages!_
 
 ## Other
 
@@ -17,4 +17,4 @@ Here are the meaning of colors in UI:
 
 ## References
 
-- Fortune Telling Methodology (ក្បួនទស្សន៍ទាយ): <https://komnotra.wordpress.com/fortune-tailer/phone-number-fortune/>
+- Formulas (ក្បួនទស្សន៍ទាយ): <https://komnotra.wordpress.com/fortune-tailer/phone-number-fortune/>
