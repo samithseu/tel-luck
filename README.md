@@ -9,11 +9,11 @@ Telephone Luck (Phone Number Fortune Teller).
 
 Here are the meaning of colors in UI:
 
-$${\color{green}ល្អណាស់ \space (Excellent) \space}$$
-$${\color{blue}ល្អ \space (Good) \space}$$
-$$ ធម្មតា (Normal) $$
-$${\color{orange}អាក្រក់ \space (Bad) \space}$$
-$${\color{red}អាក្រក់ណាស់ \space (Terrible) \space}$$
+- ល្អណាស់ ${\color{green}\space(Excellent)\space}$
+- ល្អ ${\color{blue}\space(Good)\space}$
+- ធម្មតា $(Normal)$
+- អាក្រក់ ${\color{orange}\space(Bad)\space}$
+- អាក្រក់ណាស់ ${\color{red}\space(Terrible)\space}$
 
 ## References
 
