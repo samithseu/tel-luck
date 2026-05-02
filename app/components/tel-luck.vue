@@ -5,87 +5,138 @@ await asyncData;
 </script>
 
 <template>
-  <div class="wrapper" :style="`--result-clr:var(--color-${className});`">
-    <h1>ទស្សន៍ទាយលេខទូរសព្ទ (Tel-Luck)</h1>
-
-    <div class="phone-input">
-      <input
-        class="inline-full"
-        autofocus
-        v-model="phoneInput"
-        type="tel"
-        inputmode="numeric"
-        maxlength="11"
-        placeholder="សូមបញ្ចូលលេខទូរសព្ទ (ឧ. 012 345 678)"
-        aria-label="Phone number"
-        @input="phoneInput = phoneInput.replace(/[^0-9]/g, '')"
-      />
+  <article
+    class="card"
+    :data-has-result="!!luckResult"
+    :style="`--clr:var(--color-${className});`"
+  >
+    <div class="card-header">
+      <Icon name="tabler:sparkles" />
+      <h1>ទស្សន៍ទាយលេខទូរសព្ទ</h1>
     </div>
 
-    <p class="output">
-      លទ្ធផល:
+    <div class="card-body">
+      <div class="phone-input">
+        <input
+          class="inline-full"
+          autofocus
+          v-model="phoneInput"
+          type="tel"
+          inputmode="numeric"
+          maxlength="11"
+          placeholder="សូមបញ្ចូលលេខទូរសព្ទដើម្បីទស្សន៍ទាយ (ឧ. 012 345 678)"
+          aria-label="Phone number"
+          @input="phoneInput = phoneInput.replace(/[^0-9]/g, '')"
+        />
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <div class="result-label">
+        <Icon name="tabler:text-scan-2" />
+        <span>លទ្ធផល</span>
+      </div>
+
       <output v-if="luckResult"
         >({{ luckResult.short }}) {{ luckResult.long }}</output
       >
       <output v-else
-        >ខ្វះតែលេខទូរសព្ទ
-        <span class="font-bold">{{ onlyCharLeft }}</span> ខ្ទង់
+        >ខ្វះតែលេខទូរសព្ទ <span>{{ onlyCharLeft }}</span> ខ្ទង់
         អ្នកនឹងឃើញលទ្ធផល!</output
       >
-    </p>
-
-    <p class="reference">
-      ក្បួនទស្សន៍ទាយ:
-      <NuxtLink
-        external
-        target="_blank"
-        to="https://komnotra.wordpress.com/fortune-tailer/phone-number-fortune/"
-        >ប្រភព</NuxtLink
-      >
-    </p>
-  </div>
+    </div>
+  </article>
 </template>
 
 <style>
 @reference "#main.css";
 
-.wrapper {
-  @apply border border-(--result-clr) p-6 max-inline-2xl flex flex-col items-center gap-4 transition-[colors,max-inline-size] duration-200 bg-[hsl(from_var(--result-clr)_h_s_l/0.1)] rounded-xl;
-
+.card {
   :has(> &) {
-    @apply grid place-items-center min-h-svh;
+    @apply content-center min-block-svh;
+  }
+
+  @apply max-width-px-6 border-2 border-foreground/40 rounded-md md:rounded-lg lg:rounded-xl overflow-hidden;
+
+  &[data-has-result="true"] {
+    @apply border-(--clr)/40;
+  }
+
+  & .card-header {
+    @apply inline-full border-b-2 border-foreground/40 p-1.5 md:p-2 lg:p-3 flex justify-center items-center gap-1.5 md:gap-2 *:text-primary;
+
+    :has([data-has-result="true"]) & {
+      @apply *:text-(--clr) border-(--clr)/40;
+    }
+
+    & .iconify {
+      @apply text-xl md:text-3xl;
+    }
+
+    & h1 {
+      @apply text-lg md:text-xl lg:text-2xl text-center font-bold;
+    }
+  }
+
+  & .card-body {
+    & .phone-input {
+      @apply inline-full;
+
+      & input {
+        @apply inline-full p-1.5 md:p-2 lg:p-3 text-center font-semibold text-base md:text-lg;
+
+        &:not(:placeholder-shown) {
+          @apply text-primary;
+        }
+
+        &:focus-visible {
+          @apply outline outline-(--clr);
+        }
+      }
+    }
+  }
+
+  & .card-footer {
+    @apply inline-full border-t-2 border-foreground/40 grid grid-cols-[auto_1fr];
+
+    :has([data-has-result="true"]) & {
+      @apply *:text-(--clr) border-(--clr)/40;
+    }
+
+    & > * {
+      @apply p-1.5 md:p-2 lg:p-3 text-(--clr);
+    }
+
+    & .result-label {
+      @apply border-r-2 border-foreground/40 font-semibold flex items-center gap-1.5;
+
+      :has([data-has-result="true"]) & {
+        @apply *:text-(--clr) border-(--clr)/40;
+      }
+
+      & > * {
+        @apply text-foreground;
+      }
+
+      & span {
+        @apply text-base md:text-lg;
+      }
+    }
+
+    & output {
+      @apply transition-colors text-justify duration-200 text-wrap text-base md:text-lg;
+
+      :has([data-has-result="false"]) & {
+        @apply font-medium text-foreground italic;
+      }
+      :has([data-has-result="true"]) & {
+        @apply text-(--clr) font-semibold;
+      }
+    }
   }
 
   &::before {
-    @apply absolute content-[''] w-full h-full top-0 left-0 -z-1 inset-shadow-[0_0_5rem_0rem_var(--result-clr)] transition-shadow duration-300;
-  }
-
-  & h1 {
-    @apply text-2xl text-center font-bold text-primary;
-  }
-
-  & .output {
-    @apply text-center;
-    & > output {
-      @apply text-(--result-clr) font-semibold transition-colors duration-200;
-    }
-  }
-}
-
-.phone-input {
-  @apply inline-full;
-  & input {
-    @apply w-full border border-(--result-clr) p-2 rounded-lg text-center;
-
-    &:focus-visible {
-      @apply outline outline-(--result-clr);
-    }
-  }
-}
-
-.reference {
-  & a {
-    @apply underline text-primary font-semibold;
+    @apply absolute content-[''] inline-full block-full top-0 left-0 -z-1 inset-shadow-[0_0_2rem_0rem_var(--clr)] sm:inset-shadow-[0_0_4rem_0rem_var(--clr)] md:inset-shadow-[0_0_5rem_0rem_var(--clr)] lg:inset-shadow-[0_0_6rem_0rem_var(--clr)] transition-shadow duration-300;
   }
 }
 </style>

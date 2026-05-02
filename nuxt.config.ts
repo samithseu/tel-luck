@@ -21,7 +21,7 @@ export default defineNuxtConfig({
       {
         name: "Kantumruy Pro",
         styles: ["normal"],
-        weights: [300, 400, 600, 700],
+        weights: [300, 400, 500, 600, 700],
         subsets: ["khmer"],
         global: true,
       },

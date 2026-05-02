@@ -5,7 +5,7 @@
 
 /* custom theme */
 :root {
-  --clr-fg: light-dark(theme(color.zinc.800), theme(color.zinc.200));
+  --clr-fg: light-dark(theme(color.zinc.700), theme(color.zinc.300));
   --clr-bg: light-dark(theme(color.zinc.100), theme(color.zinc.900));
   --clr-primary: light-dark(theme(color.black), theme(color.white));
   --clr-excellent: light-dark(theme(color.green.600), theme(color.green.400));
@@ -22,6 +22,11 @@
   --color-foreground: var(--clr-fg);
   --color-background: var(--clr-bg);
   --color-primary: var(--clr-primary);
+  --color-excellent: var(--clr-excellent);
+  --color-good: var(--clr-good);
+  --color-normal: var(--clr-normal);
+  --color-bad: var(--clr-bad);
+  --color-terrible: var(--clr-terrible);
 }
 @theme static {
   --color-ល្អណាស់: var(--clr-excellent);
@@ -38,6 +43,14 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+@utility max-width-px-* {
+  inline-size: 100%;
+  margin-inline: auto;
+  max-inline-size: min(
+    100% - calc(calc(var(--spacing) * --value(integer)) * 2),
+    var(--container-lg)
+  );
 }
 
 /* custom styles */
