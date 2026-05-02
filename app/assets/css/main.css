@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* custom variants */
+@custom-variant direct-parent (:has(>&));
+
+/* custom theme */
+:root {
+  --clr-fg: light-dark(theme(color.zinc.800), theme(color.zinc.200));
+  --clr-bg: light-dark(theme(color.zinc.100), theme(color.zinc.900));
+  --clr-primary: light-dark(theme(color.black), theme(color.white));
+  --clr-excellent: light-dark(theme(color.green.600), theme(color.green.400));
+  --clr-good: light-dark(theme(color.blue.600), theme(color.blue.400));
+  --clr-normal: var(--clr-primary);
+  --clr-bad: light-dark(theme(color.orange.600), theme(color.orange.400));
+  --clr-terrible: light-dark(theme(color.red.600), theme(color.red.400));
+}
+@theme inline {
+  --font-sans:
+    "Inter", "Kantumruy Pro", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  --default-font-family: var(--font-sans);
+  --color-foreground: var(--clr-fg);
+  --color-background: var(--clr-bg);
+  --color-primary: var(--clr-primary);
+}
+@theme static {
+  --color-ល្អណាស់: var(--clr-excellent);
+  --color-ល្អ: var(--clr-good);
+  --color-ធម្មតា: var(--clr-normal);
+  --color-អាក្រក់: var(--clr-bad);
+  --color-អាក្រក់ណាស់: var(--clr-terrible);
+}
+
+/* custom utilities */
+@utility hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* custom styles */
+::selection {
+  @apply bg-foreground text-background;
+}
+html {
+  @apply scheme-light-dark hide-scrollbar;
+}
+body {
+  @apply bg-background text-foreground;
+}
