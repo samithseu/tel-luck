@@ -11,8 +11,24 @@ await asyncData;
     :style="`--clr:var(--color-${className});`"
   >
     <div class="card-header">
-      <Icon name="tabler:sparkles" />
-      <h1>ទស្សន៍ទាយលេខទូរសព្ទ</h1>
+      <div class="title">
+        <Icon name="tabler:sparkles" />
+        <h1>ទស្សន៍ទាយលេខទូរសព្ទ</h1>
+      </div>
+      <div class="subtitle">
+        <p>
+          <span>ទស្សន៍ទាយជាមួយនឹងល្បឿនលឿនបំផុត</span>
+          <Icon name="tabler:bolt" />
+        </p>
+        <NuxtLink
+          external
+          to="https://komnotra.wordpress.com/fortune-tailer/phone-number-fortune/"
+          target="_blank"
+          title="ក្បួនទស្សន៍ទាយ"
+          >ក្បួនទស្សន៍ទាយ
+          <Icon name="tabler:link" />
+        </NuxtLink>
+      </div>
     </div>
 
     <div class="card-body">
@@ -51,30 +67,61 @@ await asyncData;
 <style>
 @reference "#main.css";
 
+@utility preferred-padding {
+  @apply p-2 md:p-2.5 lg:p-3.5;
+}
+@utility preferred-gap {
+  @apply gap-2 md:gap-2.5;
+}
+
 .card {
   :has(> &) {
     @apply content-center min-block-svh;
   }
 
-  @apply max-width-px-6 border-2 border-foreground/40 rounded-md md:rounded-lg lg:rounded-xl overflow-hidden;
+  @apply max-width-px-6 border-2 border-foreground/40 rounded-md md:rounded-lg lg:rounded-xl overflow-hidden [anchor-name:--card];
 
   &[data-has-result="true"] {
     @apply border-(--clr)/40;
   }
 
   & .card-header {
-    @apply inline-full border-b-2 border-foreground/40 p-1.5 md:p-2 lg:p-3 flex justify-center items-center gap-1.5 md:gap-2 *:text-primary;
+    @apply inline-full border-b-2 border-foreground/40 preferred-padding flex flex-col justify-center items-center preferred-gap *:text-primary;
 
     :has([data-has-result="true"]) & {
       @apply *:text-(--clr) border-(--clr)/40;
     }
 
-    & .iconify {
-      @apply text-xl md:text-3xl;
+    & .title {
+      @apply flex justify-center items-center preferred-gap;
+
+      & .iconify {
+        @apply text-xl md:text-3xl;
+      }
+
+      & h1 {
+        @apply text-lg md:text-xl lg:text-2xl text-center font-bold;
+      }
     }
 
-    & h1 {
-      @apply text-lg md:text-xl lg:text-2xl text-center font-bold;
+    & .subtitle {
+      @apply flex flex-wrap justify-center items-center preferred-gap *:text-center;
+
+      & > * {
+        @apply text-sm md:text-base font-medium flex justify-center gap-0.5 items-center text-foreground text-center;
+
+        :has([data-has-result="true"]) & {
+          @apply text-(--clr);
+        }
+      }
+
+      & a {
+        @apply absolute [position-anchor:--card] bottom-[anchor(top)] right-[anchor(98%)] px-2 border-2 rounded-full translate-y-1/2 bg-background border-foreground/40 text-foreground transition-colors duration-200 hover:bg-foreground hover:text-background;
+
+        :has([data-has-result="true"]) & {
+          @apply border-(--clr)/40 hover:bg-(--clr);
+        }
+      }
     }
   }
 
@@ -83,7 +130,7 @@ await asyncData;
       @apply inline-full;
 
       & input {
-        @apply inline-full p-1.5 md:p-2 lg:p-3 text-center font-semibold text-base md:text-lg;
+        @apply inline-full preferred-padding text-center font-semibold text-base md:text-lg leading-relaxed;
 
         &:not(:placeholder-shown) {
           @apply text-primary;
@@ -104,7 +151,7 @@ await asyncData;
     }
 
     & > * {
-      @apply p-1.5 md:p-2 lg:p-3 text-(--clr);
+      @apply preferred-padding text-(--clr);
     }
 
     & .result-label {
