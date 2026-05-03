@@ -17,7 +17,7 @@ await asyncData;
       </div>
       <div class="subtitle">
         <p>
-          <span>ទស្សន៍ទាយជាមួយនឹងល្បឿនលឿនបំផុត</span>
+          <span>ជាមួយនឹងល្បឿនលឿនបំផុត</span>
           <Icon name="tabler:bolt" />
         </p>
         <NuxtLink
@@ -58,7 +58,7 @@ await asyncData;
       >
       <output v-else
         >ខ្វះតែលេខទូរសព្ទ <span>{{ onlyCharLeft }}</span> ខ្ទង់
-        អ្នកនឹងឃើញលទ្ធផល!</output
+        អ្នកនឹងឃើញជោគជតារបស់អ្នក!</output
       >
     </div>
   </article>
@@ -73,23 +73,29 @@ await asyncData;
 @utility preferred-gap {
   @apply gap-2 md:gap-2.5;
 }
+@utility preferred-border-color {
+  @apply border-(--clr)/50;
+}
+@utility preferred-duration {
+  @apply duration-200;
+}
 
 .card {
   :has(> &) {
     @apply content-center min-block-svh;
   }
 
-  @apply max-width-px-6 border-2 border-foreground/40 rounded-md md:rounded-lg lg:rounded-xl overflow-hidden [anchor-name:--card];
+  @apply max-width-px-6 border-2 border-foreground/40 rounded-md md:rounded-lg lg:rounded-xl overflow-hidden [anchor-name:--card] bg-background shadow-(--clr) md:shadow-md;
 
   &[data-has-result="true"] {
-    @apply border-(--clr)/40;
+    @apply preferred-border-color;
   }
 
   & .card-header {
     @apply inline-full border-b-2 border-foreground/40 preferred-padding flex flex-col justify-center items-center preferred-gap *:text-primary;
 
     :has([data-has-result="true"]) & {
-      @apply *:text-(--clr) border-(--clr)/40;
+      @apply *:text-(--clr) preferred-border-color;
     }
 
     & .title {
@@ -116,10 +122,10 @@ await asyncData;
       }
 
       & a {
-        @apply absolute [position-anchor:--card] bottom-[anchor(top)] right-[anchor(98%)] px-2 border-2 rounded-full translate-y-1/2 bg-background border-foreground/40 text-foreground transition-colors duration-200 hover:bg-foreground hover:text-background;
+        @apply absolute [position-anchor:--card] bottom-[anchor(top)] right-[anchor(98%)] px-2 border-2 rounded-full translate-y-1/2 bg-background border-foreground/40 text-foreground transition-colors preferred-duration hover:bg-foreground hover:text-background;
 
         :has([data-has-result="true"]) & {
-          @apply border-(--clr)/40 hover:bg-(--clr);
+          @apply preferred-border-color hover:bg-(--clr);
         }
       }
     }
@@ -147,7 +153,7 @@ await asyncData;
     @apply inline-full border-t-2 border-foreground/40 grid grid-cols-[auto_1fr];
 
     :has([data-has-result="true"]) & {
-      @apply *:text-(--clr) border-(--clr)/40;
+      @apply *:text-(--clr) preferred-border-color;
     }
 
     & > * {
@@ -158,7 +164,7 @@ await asyncData;
       @apply border-r-2 border-foreground/40 font-semibold flex items-center gap-1.5;
 
       :has([data-has-result="true"]) & {
-        @apply *:text-(--clr) border-(--clr)/40;
+        @apply *:text-(--clr) preferred-border-color;
       }
 
       & > * {
@@ -171,7 +177,7 @@ await asyncData;
     }
 
     & output {
-      @apply transition-colors text-justify duration-200 text-wrap text-base md:text-lg;
+      @apply transition-colors text-justify preferred-duration text-wrap text-base md:text-lg;
 
       :has([data-has-result="false"]) & {
         @apply font-medium text-foreground italic;
@@ -183,7 +189,7 @@ await asyncData;
   }
 
   &::before {
-    @apply absolute content-[''] inline-full block-full top-0 left-0 -z-1 inset-shadow-[0_0_2rem_0rem_var(--clr)] sm:inset-shadow-[0_0_4rem_0rem_var(--clr)] md:inset-shadow-[0_0_5rem_0rem_var(--clr)] lg:inset-shadow-[0_0_6rem_0rem_var(--clr)] transition-shadow duration-300;
+    @apply absolute content-[''] inline-full block-full top-0 left-0 -z-1 inset-shadow-[0_0_2rem_0rem_var(--clr)] sm:inset-shadow-[0_0_4rem_0rem_var(--clr)] md:inset-shadow-[0_0_5rem_0rem_var(--clr)] lg:inset-shadow-[0_0_6rem_0rem_var(--clr)] transition-shadow preferred-duration;
   }
 }
 </style>

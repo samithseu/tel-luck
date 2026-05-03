@@ -14,13 +14,15 @@ export const useTelLuck = () => {
 
   // Refs
   const phoneInput = ref<string>("");
-  const onlyCharLeft = computed(() => Math.abs(phoneInput.value.length - 6));
+  const onlyCharLeft = computed(() =>
+    Math.abs(phoneInput.value.length - MIN_PHONE_LENGTH),
+  );
 
   const luckResult = computed(() => {
     if (phoneInput.value.length < MIN_PHONE_LENGTH || !data.value?.length)
       return null;
 
-    const lastSix = Number(phoneInput.value.slice(-6));
+    const lastSix = Number(phoneInput.value.slice(-MIN_PHONE_LENGTH));
     if (isNaN(lastSix)) return null;
 
     // Simplified Math: ((x / 80) % 1) * 80 = x % 80
