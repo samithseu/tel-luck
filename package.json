@@ -6,7 +6,7 @@
     "clean": "nuxt cleanup",
     "build": "nuxt cleanup && nuxt build",
     "dev": "nuxt cleanup && nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "nuxt cleanup && nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
