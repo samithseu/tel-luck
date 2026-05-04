@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import favicon from "/favicon.svg";
+import favicon from "/favicon.ico";
 
 const title = "Telephone Luck - Phone number fortune teller";
 const desc =
