@@ -26,7 +26,7 @@ await asyncData;
           target="_blank"
           title="ក្បួនទស្សន៍ទាយ"
           >ក្បួនទស្សន៍ទាយ
-          <Icon name="tabler:link" />
+          <Icon name="tabler:external-link" />
         </NuxtLink>
       </div>
     </div>
@@ -54,11 +54,12 @@ await asyncData;
       </div>
 
       <output v-if="luckResult"
-        >({{ luckResult.short }}) {{ luckResult.long }}</output
+        >({{ luckResult.short }}) {{ luckResult.long }}។</output
       >
       <output v-else
-        >ខ្វះតែលេខទូរសព្ទ <span>{{ onlyCharLeft }}</span> ខ្ទង់
-        អ្នកនឹងឃើញជោគជតារបស់អ្នក!</output
+        >ខ្វះតែលេខទូរសព្ទ
+        <span>{{ onlyCharLeft }}</span>
+        ខ្ទង់អ្នកនឹងឃើញ&shy;ជោគជតារបស់អ្នក!</output
       >
     </div>
   </article>
@@ -71,7 +72,7 @@ await asyncData;
   @apply p-2 md:p-2.5 lg:p-3.5;
 }
 @utility preferred-gap {
-  @apply gap-2 md:gap-2.5;
+  @apply gap-1.5 md:gap-2;
 }
 @utility preferred-border-color {
   @apply border-(--clr)/50;
@@ -122,7 +123,7 @@ await asyncData;
       }
 
       & a {
-        @apply absolute [position-anchor:--card] bottom-[anchor(top)] right-[anchor(98%)] px-2 border-2 rounded-full translate-y-1/2 bg-background border-foreground/40 text-foreground transition-colors preferred-duration hover:bg-foreground hover:text-background;
+        @apply absolute [position-anchor:--card] bottom-[anchor(bottom)] right-[anchor(50%)] px-2  rounded-full translate-y-2/3 translate-x-1/2 bg-background border-2 border-foreground/40 text-foreground transition-colors preferred-duration hover:bg-foreground hover:text-background shadow-(--clr) md:shadow-md;
 
         :has([data-has-result="true"]) & {
           @apply preferred-border-color hover:bg-(--clr);
@@ -177,7 +178,7 @@ await asyncData;
     }
 
     & output {
-      @apply transition-colors text-justify preferred-duration text-wrap text-base md:text-lg;
+      @apply transition-colors preferred-duration text-pretty hyphens-auto text-base md:text-lg;
 
       :has([data-has-result="false"]) & {
         @apply font-medium text-foreground italic;

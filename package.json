@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "clean": "nuxt cleanup",
+    "clean": "nuxt cleanup && rm -rf ./node_modules/.cache",
     "build": "nuxt cleanup && nuxt build",
     "dev": "nuxt cleanup && nuxt dev",
     "generate": "nuxt cleanup && nuxt generate",

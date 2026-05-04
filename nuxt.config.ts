@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   modules: ["@nuxt/icon", "@nuxt/fonts"],
   app: { baseURL: "/tel-luck/" },
   icon: { serverBundle: "auto" },
+  nitro: { prerender: { routes: ["/api/luck"] } },
   fonts: {
     families: [
       {
