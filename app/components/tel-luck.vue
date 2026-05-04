@@ -13,11 +13,11 @@ await asyncData;
     <div class="card-header">
       <div class="title">
         <Icon name="tabler:sparkles" />
-        <h1>ទស្សន៍ទាយលេខទូរសព្ទ</h1>
+        <h1>ទស្សន៍ទាយលេខទូរសព្ទជាមួយ tel-luck</h1>
       </div>
       <div class="subtitle">
         <p>
-          <span>ជាមួយនឹងល្បឿនលឿនបំផុត</span>
+          <span>ដែលមានល្បឿនលឿនបំផុត</span>
           <Icon name="tabler:bolt" />
         </p>
         <NuxtLink
@@ -83,7 +83,7 @@ await asyncData;
   @apply gap-1.5 md:gap-2;
 }
 @utility preferred-border-color {
-  @apply border-(--clr)/50;
+  @apply border-(--clr)/30;
 }
 @utility preferred-duration {
   @apply duration-200;
@@ -108,10 +108,10 @@ await asyncData;
     }
 
     & .title {
-      @apply flex justify-center items-center preferred-gap;
+      @apply flex flex-col justify-center items-center preferred-gap;
 
       & .iconify {
-        @apply text-xl md:text-3xl;
+        @apply text-2xl md:text-3xl lg:text-4xl;
       }
 
       & h1 {
@@ -138,7 +138,7 @@ await asyncData;
         }
 
         &:nth-of-type(1) {
-          @apply top-[anchor(top)] -translate-y-2/3;
+          @apply shadow-none top-[anchor(top)] -translate-y-2/3;
         }
         &:nth-of-type(2) {
           @apply bottom-[anchor(bottom)] translate-y-2/3;
