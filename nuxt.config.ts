@@ -19,7 +19,7 @@ export default defineNuxtConfig({
         global: true,
       },
       {
-        name: "Kantumruy Pro",
+        name: "Google Sans",
         styles: ["normal"],
         weights: [300, 400, 500, 600, 700],
         subsets: ["khmer"],

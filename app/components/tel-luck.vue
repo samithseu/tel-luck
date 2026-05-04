@@ -28,6 +28,14 @@ await asyncData;
           >ក្បួនទស្សន៍ទាយ
           <Icon name="tabler:external-link" />
         </NuxtLink>
+        <NuxtLink
+          external
+          to="https://github.com/samithseu/tel-luck"
+          target="_blank"
+          title="source"
+          >source
+          <Icon name="tabler:external-link" />
+        </NuxtLink>
       </div>
     </div>
 
@@ -57,9 +65,9 @@ await asyncData;
         >({{ luckResult.short }}) {{ luckResult.long }}។</output
       >
       <output v-else
-        >ខ្វះតែលេខទូរសព្ទ
+        >ខ្វះតែ
         <span>{{ onlyCharLeft }}</span>
-        ខ្ទង់អ្នកនឹងឃើញ&shy;ជោគជតារបស់អ្នក!</output
+        ខ្ទង់នឹងឃើញ&shy;ជោគជតារបស់អ្នក!</output
       >
     </div>
   </article>
@@ -123,10 +131,17 @@ await asyncData;
       }
 
       & a {
-        @apply absolute [position-anchor:--card] bottom-[anchor(bottom)] right-[anchor(50%)] px-2  rounded-full translate-y-2/3 translate-x-1/2 bg-background border-2 border-foreground/40 text-foreground transition-colors preferred-duration hover:bg-foreground hover:text-background shadow-(--clr) md:shadow-md;
+        @apply absolute [position-anchor:--card] right-[anchor(50%)] translate-x-1/2 px-2 rounded-full bg-background border-2 border-foreground/40 text-foreground transition-colors preferred-duration hover:bg-foreground hover:text-background shadow-(--clr) md:shadow-md;
 
         :has([data-has-result="true"]) & {
           @apply preferred-border-color hover:bg-(--clr);
+        }
+
+        &:nth-of-type(1) {
+          @apply top-[anchor(top)] -translate-y-2/3;
+        }
+        &:nth-of-type(2) {
+          @apply bottom-[anchor(bottom)] translate-y-2/3;
         }
       }
     }

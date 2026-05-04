@@ -16,7 +16,7 @@
 }
 @theme inline {
   --font-sans:
-    "Inter", "Kantumruy Pro", system-ui, -apple-system, BlinkMacSystemFont,
+    "Inter", "Google Sans", system-ui, -apple-system, BlinkMacSystemFont,
     sans-serif;
   --default-font-family: var(--font-sans);
   --color-foreground: var(--clr-fg);
