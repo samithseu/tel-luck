@@ -193,7 +193,7 @@ await asyncData;
     }
 
     & output {
-      @apply transition-colors preferred-duration text-pretty hyphens-auto text-base md:text-lg;
+      @apply transition-colors preferred-duration text-justify hyphens-auto text-base md:text-lg;
 
       :has([data-has-result="false"]) & {
         @apply font-medium text-foreground italic;
