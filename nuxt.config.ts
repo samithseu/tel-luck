@@ -6,7 +6,6 @@ export default defineNuxtConfig({
   css: ["./app/assets/css/main.css"],
   vite: { plugins: [tailwindcss()] },
   modules: ["@nuxt/icon", "@nuxt/fonts"],
-  app: { baseURL: "/tel-luck/" },
   icon: { serverBundle: "auto" },
   fonts: {
     families: [
