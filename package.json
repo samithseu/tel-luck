@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "clean": "nuxt cleanup && rm -rf ./node_modules/.cache",
+    "clean:all": "nuxt cleanup && rm -rf ./node_modules/ ./.output ./dist/",
     "build": "nuxt cleanup && nuxt build",
     "dev": "nuxt cleanup && nuxt dev",
     "generate": "nuxt cleanup && nuxt generate",
@@ -13,14 +14,15 @@
   "dependencies": {
     "@nuxt/fonts": "0.14.0",
     "@nuxt/icon": "2.2.1",
-    "nuxt": "^4.4.8",
-    "vue": "^3.5.39",
-    "vue-router": "^5.1.0"
+    "maska": "^3.2.0",
+    "nuxt": "^4.5.2",
+    "vue": "^3.5.41",
+    "vue-router": "^5.2.0"
   },
   "devDependencies": {
-    "@iconify-json/tabler": "^1.2.35",
-    "@tailwindcss/vite": "^4.3.1",
-    "tailwindcss": "^4.3.1"
+    "@iconify-json/tabler": "^1.2.38",
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3"
   },
   "imports": {
     "#main.css": "./app/assets/css/main.css"
