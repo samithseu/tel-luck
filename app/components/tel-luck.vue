@@ -44,13 +44,13 @@ await asyncData;
         <input
           class="inline-full"
           autofocus
-          v-model="phoneInput"
-          type="tel"
+          v-maska="'### ### ### ##'"
+          @maska="phoneInput = $event.detail.unmasked"
+          :model-value="phoneInput"
+          type="text"
           inputmode="numeric"
-          maxlength="11"
           placeholder="សូមបញ្ចូលលេខទូរសព្ទដើម្បីទស្សន៍ទាយ (ឧ. 012 345 678)"
           aria-label="Phone number"
-          @input="phoneInput = phoneInput.replace(/[^0-9]/g, '')"
         />
       </div>
     </div>
