@@ -1,10 +1,26 @@
 <script setup lang="ts">
 import favicon from "/favicon.ico";
 
-const title = "Telephone Luck - Phone number fortune teller";
+const title = "Telephone Luck - Phone number numerology";
 const desc =
-  "Telephone Luck is a website that tells you the fortune of a phone number.";
+  "Telephone Luck is a website that tells you about numerology of your phone number.";
 const url = "https://samithseu.github.io/tel-luck";
+const authorAltNames = [
+  "Seu Samith",
+  "Samith Seu",
+  "samithseu",
+  "seusamith",
+  "seumith",
+  "ស៊ឺ សាមីត",
+];
+const authorDesc = "A web developer and lifelong learner.";
+const authorSocial = [
+  "https://samithseu.vercel.app",
+  "https://github.com/samithseu",
+  "https://linkedin.com/in/samith-seu/",
+  "https://x.com/seumith",
+  "https://t.me/samithseu",
+];
 
 const seoForGoogle = {
   "@context": "https://schema.org",
@@ -28,25 +44,13 @@ const seoForGoogle = {
         "@id": "samith.dev",
         url: "https://samith.dev",
         name: "Samith Seu",
-        description: "A web developer and lifelong learner.",
-        alternateName: [
-          "Seu Samith",
-          "Samith Seu",
-          "samithseu",
-          "seusamith",
-          "seumith",
-          "ស៊ឺ សាមីត",
-        ],
-        sameAs: [
-          "https://samithseu.vercel.app",
-          "https://github.com/samithseu",
-          "https://linkedin.com/in/samith-seu/",
-          "https://x.com/seumith",
-          "https://t.me/samithseu",
-        ],
+        description: authorDesc,
+        alternateName: authorAltNames,
+        sameAs: authorSocial,
       },
       isPartOf: { "@id": `${url}/#website` },
       keywords: [
+        "លេខទូរសព្ទ",
         "ទស្សន៍ទាយលេខទូរសព្ទ",
         "ទស្សន៍ទាយ",
         "tel-luck",
@@ -54,6 +58,7 @@ const seoForGoogle = {
         "Telephone Luck",
         "Phone number fortune teller",
         "Fortune Teller",
+        "Fortune Telling",
         "Numerology",
       ],
       potentialAction: {
@@ -64,23 +69,11 @@ const seoForGoogle = {
     {
       "@id": "https://samith.dev",
       "@type": "Person",
-      description: "A web developer and lifelong learner.",
+      description: authorDesc,
       name: "Samith Seu",
       url: "https://samith.dev",
-      alternateName: [
-        "Seu Samith",
-        "Samith Seu",
-        "samithseu",
-        "seusamith",
-        "seumith",
-        "ស៊ឺ សាមីត",
-      ],
-      sameAs: [
-        "https://github.com/samithseu",
-        "https://linkedin.com/in/samith-seu/",
-        "https://x.com/seumith",
-        "https://t.me/samithseu",
-      ],
+      alternateName: authorAltNames,
+      sameAs: authorSocial,
     },
   ],
 };
