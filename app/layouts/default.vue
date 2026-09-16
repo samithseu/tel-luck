@@ -58,12 +58,10 @@
           to="https://komnotra.wordpress.com/fortune-tailer/phone-number-fortune/"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium text-muted rounded-full border border-border/80 hover:border-amber-500/40 hover:text-foreground hover:bg-surface-elevated transition-all duration-200"
+          class="size-8 sm:size-9 inline-flex items-center justify-center rounded-full text-muted border border-border/80 hover:border-amber-500/40 hover:text-foreground hover:bg-surface-elevated transition-all duration-200"
           title="ក្បួនទស្សន៍ទាយ"
         >
-          <Icon name="tabler:book" class="size-3.5 text-amber-500" />
-          <span class="hidden xs:inline">ក្បួនតម្រា</span>
-          <Icon name="tabler:external-link" class="size-3 opacity-60" />
+          <Icon name="tabler:external-link" class="size-4" />
         </NuxtLink>
 
         <!-- GitHub Link -->
@@ -82,34 +80,9 @@
 
     <!-- Main Hero Stage -->
     <main
-      class="flex-1 w-full max-w-4xl mx-auto px-4 py-4 sm:px-6 sm:py-8 flex flex-col items-center justify-center z-10"
+      class="flex-1 w-full max-w-4xl mx-auto px-4 pb-4 sm:px-6 sm:pb-8 flex flex-col items-center justify-center z-10"
     >
       <slot />
     </main>
-
-    <!-- Minimal Royal Stele Footer -->
-    <footer
-      class="w-full max-w-4xl mx-auto px-4 py-6 sm:px-8 text-center text-xs text-muted z-10"
-    >
-      <div class="flex flex-col items-center gap-2">
-        <KbachOrnament
-          variant="divider"
-          class="max-w-40 sm:max-w-50 text-border"
-        />
-
-        <p
-          class="inline-flex items-center gap-1.5 flex-wrap justify-center text-[11px] sm:text-xs text-muted mt-1"
-        >
-          <NuxtLink
-            to="https://komnotra.wordpress.com/fortune-tailer/phone-number-fortune/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="hover:text-foreground transition-colors underline decoration-dotted decoration-border underline-offset-4"
-          >
-            ផ្អែកលើក្បួនតម្រាបុរាណ
-          </NuxtLink>
-        </p>
-      </div>
-    </footer>
   </div>
 </template>
