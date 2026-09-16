@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import favicon from "/favicon.ico";
-
-const title = "Telephone Luck - Phone number numerology";
+const siteUrl = "https://tel-luck.samith.dev";
+const title = "Telephone Luck - ទស្សន៍ទាយលេខទូរសព្ទ";
 const desc =
-  "Telephone Luck is a website that tells you about numerology of your phone number.";
-const url = "https://samithseu.github.io/tel-luck";
+  "ទស្សន៍ទាយលេខទូរសព្ទតាមក្បួនតម្រាបុរាណ ៨០ ខ្ទង់ - Phone number numerology with instant calculation.";
+const authorDesc = "A web developer and lifelong learner.";
 const authorAltNames = [
   "Seu Samith",
   "Samith Seu",
@@ -13,9 +12,8 @@ const authorAltNames = [
   "seumith",
   "ស៊ឺ សាមីត",
 ];
-const authorDesc = "A web developer and lifelong learner.";
 const authorSocial = [
-  "https://samithseu.vercel.app",
+  "https://samith.dev",
   "https://github.com/samithseu",
   "https://linkedin.com/in/samith-seu/",
   "https://x.com/seumith",
@@ -26,29 +24,29 @@ const seoForGoogle = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@id": `${url}/#website`,
+      "@id": `${siteUrl}/#website`,
       "@type": "WebSite",
-      inLanguage: "en",
+      inLanguage: "km",
       name: "tel-luck",
-      url: `${url}`,
+      url: siteUrl,
     },
     {
-      "@id": `${url}/#/`,
+      "@id": `${siteUrl}/#/`,
       "@type": "WebPage",
       description: desc,
-      inLanguage: "en-US",
+      inLanguage: "km-KH",
       name: "Home",
-      url: "/",
+      url: `${siteUrl}/`,
       author: {
         "@type": "Person",
-        "@id": "samith.dev",
+        "@id": "https://samith.dev",
         url: "https://samith.dev",
         name: "Samith Seu",
         description: authorDesc,
         alternateName: authorAltNames,
         sameAs: authorSocial,
       },
-      isPartOf: { "@id": `${url}/#website` },
+      isPartOf: { "@id": `${siteUrl}/#website` },
       keywords: [
         "លេខទូរសព្ទ",
         "ទស្សន៍ទាយលេខទូរសព្ទ",
@@ -63,7 +61,7 @@ const seoForGoogle = {
       ],
       potentialAction: {
         "@type": "ReadAction",
-        target: [url, "/"],
+        target: [siteUrl],
       },
     },
     {
@@ -79,31 +77,40 @@ const seoForGoogle = {
 };
 
 useHead({
-  link: [{ rel: "icon", type: "image/svg+xml", href: favicon }],
+  htmlAttrs: {
+    lang: "km",
+  },
+  link: [
+    { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+    { rel: "alternate icon", type: "image/x-icon", href: "/favicon.ico" },
+    { rel: "canonical", href: siteUrl },
+  ],
   script: [
-    { type: "application/ld+json", textContent: JSON.stringify(seoForGoogle) },
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify(seoForGoogle),
+    },
   ],
 });
 
 useSeoMeta({
-  charset: "utf-8",
-  title: title,
+  title,
   description: desc,
   author: "Samith Seu",
+  ogTitle: title,
+  ogDescription: desc,
+  ogUrl: siteUrl,
+  ogSiteName: "Tel-Luck",
+  ogType: "website",
   twitterTitle: title,
   twitterDescription: desc,
   twitterSite: "@samithseu",
-  ogTitle: title,
-  ogSiteName: "Tel-Luck",
-  ogDescription: desc,
-  ogUrl: url,
+  twitterCard: "summary_large_image",
 });
 </script>
 
 <template>
-  <div>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>

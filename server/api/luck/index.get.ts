@@ -1,3 +1,3 @@
-export default defineEventHandler(async () => {
-  return await useStorage("assets:server").get("data.json");
+export default defineEventHandler(() => {
+  return LUCK_ITEMS;
 });

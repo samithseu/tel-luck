@@ -1,10 +1,8 @@
 # Telephone Luck (tel-luck)
 
-Telephone Luck (Phone Number Numerology). Check it out 👉🏼 <a href="https://samithseu.github.io/tel-luck" target="_blank">tel-luck</a>
+Telephone Luck (Phone Number Numerology). Check it out 👉🏼 <a href="https://tel-luck.samith.dev" target="_blank">tel-luck.samith.dev</a>
 
-## Other
-
-Meaning of colors in UI:
+## Meaning of Colors
 
 - ល្អណាស់ ${\color{green}\space(Excellent)\space}$
 - ល្អ ${\color{blue}\space(Good)\space}$

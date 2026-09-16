@@ -1,42 +1,53 @@
 @import "tailwindcss";
 
-/* custom variants */
-@custom-variant direct-parent (:has(>&));
+/* OS-based automatic dark mode variant */
+@custom-variant dark (@media (prefers-color-scheme: dark));
 
-/* custom theme */
+/* Khmer Cultural Luxury Theme Palette (Adapts to OS Light/Dark with High Contrast) */
 :root {
-  --clr-fg: light-dark(theme(color.zinc.700), theme(color.zinc.300));
-  --clr-bg: light-dark(theme(color.zinc.100), theme(color.zinc.900));
-  --clr-primary: light-dark(theme(color.black), theme(color.white));
-  --clr-excellent: light-dark(theme(color.green.600), theme(color.green.400));
-  --clr-good: light-dark(theme(color.blue.600), theme(color.blue.400));
-  --clr-normal: var(--clr-primary);
-  --clr-bad: light-dark(theme(color.orange.600), theme(color.orange.400));
-  --clr-terrible: light-dark(theme(color.red.600), theme(color.red.400));
+  /* Surfaces & Backgrounds - Enhanced Contrast & Separation */
+  --clr-bg: light-dark(#f7f5f0, #09090b);
+  --clr-surface: light-dark(#ffffff, #131217);
+  --clr-surface-elevated: light-dark(#f8f5ee, #1a1822);
+  --clr-surface-muted: light-dark(#e5dfd2, #23202b);
+
+  /* Typography - Ultra-High Contrast (WCAG AAA / AA) */
+  --clr-fg: light-dark(#110f0e, #fafaf9);
+  --clr-fg-muted: light-dark(#44403c, #a8a29e);
+  --clr-fg-subtle: light-dark(#78716c, #78716c);
+
+  /* Borders & Dividers - Crisp & Well-Defined */
+  --clr-border: light-dark(#d4cdbf, #2b2734);
+  --clr-border-subtle: light-dark(#e2dcd0, #201e27);
+
+  /* Brand Luxury Khmer Gold */
+  --clr-gold: light-dark(#b87b10, #fbbf24);
+
+  /* 5 Numerology Luck Spectrum (High Contrast) */
+  --clr-excellent: light-dark(#047857, #34d399); /* Royal Jade */
+  --clr-good: light-dark(#1d4ed8, #60a5fa); /* Royal Sapphire */
+  --clr-normal: light-dark(#475569, #cbd5e1); /* Balanced Stone */
+  --clr-bad: light-dark(#c2410c, #fb923c); /* Terracotta Ochre */
+  --clr-terrible: light-dark(#b91c1c, #f87171); /* Temple Lacquer Crimson */
 }
+
 @theme inline {
   --font-sans:
-    "Inter", "Google Sans", system-ui, -apple-system, BlinkMacSystemFont,
+    "Kantumruy Pro", "Inter", system-ui, -apple-system, BlinkMacSystemFont,
     sans-serif;
   --default-font-family: var(--font-sans);
-  --color-foreground: var(--clr-fg);
   --color-background: var(--clr-bg);
-  --color-primary: var(--clr-primary);
-  --color-excellent: var(--clr-excellent);
-  --color-good: var(--clr-good);
-  --color-normal: var(--clr-normal);
-  --color-bad: var(--clr-bad);
-  --color-terrible: var(--clr-terrible);
-}
-@theme static {
-  --color-ល្អណាស់: var(--clr-excellent);
-  --color-ល្អ: var(--clr-good);
-  --color-ធម្មតា: var(--clr-normal);
-  --color-អាក្រក់: var(--clr-bad);
-  --color-អាក្រក់ណាស់: var(--clr-terrible);
+  --color-surface: var(--clr-surface);
+  --color-surface-elevated: var(--clr-surface-elevated);
+  --color-surface-muted: var(--clr-surface-muted);
+  --color-foreground: var(--clr-fg);
+  --color-muted: var(--clr-fg-muted);
+  --color-subtle: var(--clr-fg-subtle);
+  --color-border: var(--clr-border);
+  --color-gold: var(--clr-gold);
 }
 
-/* custom utilities */
+/* Custom utilities */
 @utility hide-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -44,22 +55,20 @@
     display: none;
   }
 }
-@utility max-width-px-* {
-  inline-size: 100%;
-  margin-inline: auto;
-  max-inline-size: min(
-    100% - calc(calc(var(--spacing) * --value(integer)) * 2),
-    var(--container-lg)
-  );
+
+/* Base styles */
+::selection {
+  @apply bg-amber-500/30 text-foreground;
 }
 
-/* custom styles */
-::selection {
-  @apply bg-foreground text-background;
-}
 html {
   @apply scheme-light-dark hide-scrollbar;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
+
 body {
-  @apply bg-background text-foreground;
+  @apply bg-background text-foreground font-sans antialiased;
+  min-height: 100svh;
+  overflow-x: hidden;
 }

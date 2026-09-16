@@ -1,1 +1,1 @@
-export type LuckData = { short: string; long: string };
+export * from "~~/shared/types/tel-luck";

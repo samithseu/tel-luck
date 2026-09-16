@@ -1,3 +1,3 @@
 <template>
-  <LazyTelLuck hydrate-on-visible />
+  <TelLuck />
 </template>
