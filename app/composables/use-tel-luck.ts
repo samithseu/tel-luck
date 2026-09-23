@@ -13,7 +13,7 @@ const isMinimized = ref<boolean>(false);
 const isMaximized = ref<boolean>(false);
 const copied = ref<boolean>(false);
 
-let isGlobalListenerAttached = false;
+let activeInstances = 0;
 
 export const useTelLuck = () => {
   const rawDigits = computed(() => phoneInput.value.replace(/\D/g, ""));
@@ -171,15 +171,39 @@ export const useTelLuck = () => {
       e.preventDefault();
       isCommandPaletteOpen.value = !isCommandPaletteOpen.value;
     } else if (key === "c" && luckResult.value) {
+      // Allow native copy if text is selected inside an input or document
+      const activeEl = typeof document !== "undefined" ? document.activeElement : null;
+      const isInput =
+        activeEl instanceof HTMLInputElement ||
+        activeEl instanceof HTMLTextAreaElement;
+      const hasSelection =
+        typeof window !== "undefined" &&
+        (window.getSelection()?.toString().length ?? 0) > 0;
+
+      if (isInput && hasSelection) {
+        return;
+      }
+
       e.preventDefault();
       copyResult();
     }
   };
 
   onMounted(() => {
-    if (!isGlobalListenerAttached && typeof window !== "undefined") {
-      window.addEventListener("keydown", handleGlobalKeydown);
-      isGlobalListenerAttached = true;
+    if (typeof window !== "undefined") {
+      activeInstances++;
+      if (activeInstances === 1) {
+        window.addEventListener("keydown", handleGlobalKeydown);
+      }
+    }
+  });
+
+  onUnmounted(() => {
+    if (typeof window !== "undefined") {
+      activeInstances = Math.max(0, activeInstances - 1);
+      if (activeInstances === 0) {
+        window.removeEventListener("keydown", handleGlobalKeydown);
+      }
     }
   });
 

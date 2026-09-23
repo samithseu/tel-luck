@@ -23,7 +23,7 @@ jobs:
           node-version: "22"
 
       - run: pnpm install
-      - run: pnpm generate
+      - run: pnpm build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

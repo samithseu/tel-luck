@@ -10,6 +10,7 @@ const emit = defineEmits<{
 
 <template>
   <transition
+    appear
     enter-active-class="transition duration-200 ease-out"
     enter-from-class="opacity-0 scale-95"
     enter-to-class="opacity-100 scale-100"

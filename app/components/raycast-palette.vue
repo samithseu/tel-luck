@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, nextTick } from "vue";
+import { ref, computed, watch, nextTick, onMounted } from "vue";
 
 interface RaycastAction {
   id: string;
@@ -111,18 +111,37 @@ const filteredActions = computed(() => {
   );
 });
 
+const focusInput = () => {
+  nextTick(() => {
+    searchInputRef.value?.focus();
+    if (typeof requestAnimationFrame !== "undefined") {
+      requestAnimationFrame(() => {
+        searchInputRef.value?.focus();
+      });
+    }
+    setTimeout(() => {
+      searchInputRef.value?.focus();
+    }, 50);
+  });
+};
+
 watch(
   () => props.modelValue,
   (open) => {
     if (open) {
       searchQuery.value = "";
       selectedIndex.value = 0;
-      nextTick(() => {
-        searchInputRef.value?.focus();
-      });
+      focusInput();
     }
   },
+  { immediate: true },
 );
+
+onMounted(() => {
+  if (props.modelValue) {
+    focusInput();
+  }
+});
 
 watch(searchQuery, () => {
   selectedIndex.value = 0;
@@ -161,6 +180,7 @@ const onKeydown = (e: KeyboardEvent) => {
 
 <template>
   <transition
+    appear
     enter-active-class="transition duration-200 ease-out"
     enter-from-class="opacity-0 scale-95"
     enter-to-class="opacity-100 scale-100"
@@ -190,6 +210,7 @@ const onKeydown = (e: KeyboardEvent) => {
             ref="searchInputRef"
             v-model="searchQuery"
             type="text"
+            autofocus
             placeholder="ស្វែងរកបញ្ជា... (Type a command)"
             class="flex-1 bg-transparent text-sm sm:text-base font-medium text-foreground placeholder:text-subtle focus:outline-none tracking-wide"
           />

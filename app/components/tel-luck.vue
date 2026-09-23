@@ -26,9 +26,22 @@ const moreMenuRef = ref<HTMLElement | null>(null);
 const sectionInnerRef = ref<HTMLElement | null>(null);
 const sectionHeight = ref<number | null>(null);
 let resizeObserver: ResizeObserver | null = null;
+let rAF: number | null = null;
 
 const updateHeight = () => {
-  if (sectionInnerRef.value) {
+  if (rAF !== null && typeof cancelAnimationFrame !== "undefined") {
+    cancelAnimationFrame(rAF);
+  }
+  if (typeof requestAnimationFrame !== "undefined") {
+    rAF = requestAnimationFrame(() => {
+      if (sectionInnerRef.value) {
+        const h = sectionInnerRef.value.offsetHeight;
+        if (h > 0 && h !== sectionHeight.value) {
+          sectionHeight.value = h;
+        }
+      }
+    });
+  } else if (sectionInnerRef.value) {
     const h = sectionInnerRef.value.offsetHeight;
     if (h > 0) {
       sectionHeight.value = h;
@@ -62,8 +75,13 @@ const handleWindowClose = () => {
   }
 };
 
+const hasOpenedPalette = ref(false);
+const hasOpenedAbout = ref(false);
+
 watch(isCommandPaletteOpen, (open) => {
-  if (!open && !isAboutOpen.value) {
+  if (open) {
+    hasOpenedPalette.value = true;
+  } else if (!isAboutOpen.value) {
     nextTick(() => {
       document.getElementById("phone-input")?.focus();
     });
@@ -71,7 +89,9 @@ watch(isCommandPaletteOpen, (open) => {
 });
 
 watch(isAboutOpen, (open) => {
-  if (!open && !isCommandPaletteOpen.value) {
+  if (open) {
+    hasOpenedAbout.value = true;
+  } else if (!isCommandPaletteOpen.value) {
     nextTick(() => {
       document.getElementById("phone-input")?.focus();
     });
@@ -104,6 +124,10 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.removeEventListener("click", handleClickOutside);
+  if (rAF !== null && typeof cancelAnimationFrame !== "undefined") {
+    cancelAnimationFrame(rAF);
+    rAF = null;
+  }
   if (resizeObserver) {
     resizeObserver.disconnect();
     resizeObserver = null;
@@ -664,12 +688,16 @@ onUnmounted(() => {
       </footer>
     </article>
 
-    <!-- Attached Modals: Minimal Raycast & About Dialog -->
-    <RaycastPalette
+    <!-- Attached Modals: Minimal Raycast & About Dialog (Lazy Loaded on Demand) -->
+    <LazyRaycastPalette
+      v-if="hasOpenedPalette"
       v-model="isCommandPaletteOpen"
       :has-luck-result="!!luckResult"
     />
 
-    <AboutModal v-model="isAboutOpen" />
+    <LazyAboutModal
+      v-if="hasOpenedAbout"
+      v-model="isAboutOpen"
+    />
   </div>
 </template>

@@ -12,8 +12,12 @@ export default defineNuxtConfig({
     compressPublicAssets: true,
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/api/luck"],
+      routes: ["/"],
     },
+  },
+
+  experimental: {
+    payloadExtraction: false,
   },
 
   css: ["~/assets/css/main.css"],
