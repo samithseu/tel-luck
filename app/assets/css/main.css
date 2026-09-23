@@ -5,6 +5,8 @@
 
 /* Khmer Cultural Luxury Theme Palette (Adapts to OS Light/Dark with High Contrast) */
 :root {
+  interpolate-size: allow-keywords;
+  color-scheme: light dark;
   /* Surfaces & Backgrounds - Enhanced Contrast & Separation */
   --clr-bg: light-dark(#f7f5f0, #09090b);
   --clr-surface: light-dark(#ffffff, #131217);

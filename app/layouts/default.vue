@@ -1,87 +1,27 @@
 <template>
   <div
-    class="relative min-h-svh w-full flex flex-col justify-between overflow-x-hidden bg-background text-foreground transition-colors duration-500"
+    class="relative min-h-svh w-full flex items-center justify-center p-2 sm:p-4 md:p-8 overflow-x-hidden bg-[#e5e5ea] dark:bg-[#0c0c0e] text-foreground transition-colors duration-500 selection:bg-amber-500/30 selection:text-foreground"
   >
-    <!-- Ambient Atmospheric Halo (Pure CSS) -->
+    <!-- macOS Ambient Desktop Aurora Backdrop -->
     <div
       aria-hidden="true"
       class="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
+      <!-- Subtle multi-layer ambient glow -->
       <div
-        class="absolute -top-52 left-1/2 -translate-x-1/2 size-150 sm:size-200 rounded-full bg-linear-to-b from-amber-500/10 via-amber-500/3 to-transparent blur-3xl dark:from-amber-400/6 dark:via-amber-500/1"
+        class="absolute -top-40 -left-40 size-120 sm:size-180 rounded-full bg-linear-to-br from-amber-500/10 via-amber-600/4 to-transparent blur-3xl dark:from-amber-500/8 dark:via-amber-600/2"
+      />
+      <div
+        class="absolute -bottom-40 -right-40 size-120 sm:size-180 rounded-full bg-linear-to-tl from-indigo-500/8 via-sky-500/4 to-transparent blur-3xl dark:from-indigo-600/6 dark:via-purple-600/2"
+      />
+      <!-- Subtle Vignette Grid Pattern -->
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.06)_100%)] dark:bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.5)_100%)]"
       />
     </div>
 
-    <!-- Header Navigation (Clean, Minimal, Luxury) -->
-    <header
-      class="w-full max-w-4xl mx-auto px-5 py-4 sm:px-8 sm:py-6 flex items-center justify-between z-20"
-    >
-      <!-- Royal Brand Logo with Khmer Seal -->
-      <NuxtLink
-        to="/"
-        class="group flex items-center gap-2.5 sm:gap-3 transition-transform duration-200 active:scale-98"
-        aria-label="ទំព័រដើម tel-luck"
-      >
-        <div
-          class="relative size-9 sm:size-10 rounded-2xl bg-surface-elevated border border-border flex items-center justify-center shadow-sm group-hover:border-amber-500/50 group-hover:shadow-[0_0_14px_rgba(245,158,11,0.22)] transition-all"
-        >
-          <KbachOrnament
-            variant="medallion"
-            class="size-6 sm:size-7 drop-shadow-[0_1px_4px_rgba(245,158,11,0.2)]"
-          />
-        </div>
-        <div class="flex flex-col">
-          <div class="flex items-center gap-1.5">
-            <span
-              class="text-base sm:text-lg font-bold tracking-tight text-foreground font-sans leading-none"
-            >
-              tel-luck
-            </span>
-            <span
-              class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20 leading-none"
-            >
-              ៨០
-            </span>
-          </div>
-          <span
-            class="text-[11px] font-medium text-muted leading-tight mt-0.5 tracking-wide"
-          >
-            ទស្សន៍ទាយលេខទូរសព្ទ
-          </span>
-        </div>
-      </NuxtLink>
-
-      <!-- Action Items -->
-      <nav class="flex items-center gap-2 sm:gap-3">
-        <!-- Formula Reference Link -->
-        <NuxtLink
-          to="https://komnotra.wordpress.com/fortune-tailer/phone-number-fortune/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="size-8 sm:size-9 inline-flex items-center justify-center rounded-full text-muted border border-border/80 hover:border-amber-500/40 hover:text-foreground hover:bg-surface-elevated transition-all duration-200"
-          title="ក្បួនទស្សន៍ទាយ"
-        >
-          <Icon name="tabler:external-link" class="size-4" />
-        </NuxtLink>
-
-        <!-- GitHub Link -->
-        <NuxtLink
-          to="https://github.com/samithseu/tel-luck"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="size-8 sm:size-9 inline-flex items-center justify-center rounded-full text-muted border border-border/80 hover:border-amber-500/40 hover:text-foreground hover:bg-surface-elevated transition-all duration-200"
-          aria-label="ប្រភពកូដ GitHub"
-          title="GitHub"
-        >
-          <Icon name="tabler:brand-github" class="size-4" />
-        </NuxtLink>
-      </nav>
-    </header>
-
-    <!-- Main Hero Stage -->
-    <main
-      class="flex-1 w-full max-w-4xl mx-auto px-4 pb-4 sm:px-6 sm:pb-8 flex flex-col items-center justify-center z-10"
-    >
+    <!-- The Singular Centerpiece: macOS Application Window -->
+    <main class="w-full flex items-center justify-center z-10">
       <slot />
     </main>
   </div>
