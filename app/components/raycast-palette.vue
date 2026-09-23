@@ -24,18 +24,16 @@ const searchQuery = ref("");
 const selectedIndex = ref(0);
 const searchInputRef = ref<HTMLInputElement | null>(null);
 
-const {
-  copyResult,
-  clear,
-  isAboutOpen,
-} = useTelLuck();
+const { copyResult, clear, isAboutOpen } = useTelLuck();
 
 const actions = computed<RaycastAction[]>(() => [
   {
     id: "copy",
     category: "សកម្មភាព (Actions)",
     title: "ចម្លងលទ្ធផលទស្សន៍ទាយ (Copy Prediction)",
-    subtitle: props.hasLuckResult ? "ចម្លងអត្ថន័យទំនាយទៅក្ដារតម្បៀតខ្ទាស់" : "ទាមទារលេខ ៦ ខ្ទង់ឡើងទៅ",
+    subtitle: props.hasLuckResult
+      ? "ចម្លងអត្ថន័យទំនាយទៅក្ដារតម្បៀតខ្ទាស់"
+      : "ទាមទារលេខ ៦ ខ្ទង់ឡើងទៅ",
     icon: "tabler:copy",
     shortcut: "⌘C",
     run: () => {
@@ -49,7 +47,7 @@ const actions = computed<RaycastAction[]>(() => [
     title: "សម្អាតលេខទូរសព្ទចេញ (Clear Input)",
     subtitle: "លុបលេខដែលបានបញ្ចូលទាំងអស់ចេញ",
     icon: "tabler:x",
-    shortcut: "Esc",
+    shortcut: "ESC",
     run: () => {
       clear();
       emit("update:modelValue", false);
@@ -66,7 +64,7 @@ const actions = computed<RaycastAction[]>(() => [
         window.open(
           "https://komnotra.wordpress.com/fortune-tailer/phone-number-fortune/",
           "_blank",
-          "noopener,noreferrer"
+          "noopener,noreferrer",
         );
       }
       emit("update:modelValue", false);
@@ -83,7 +81,7 @@ const actions = computed<RaycastAction[]>(() => [
         window.open(
           "https://github.com/samithseu/tel-luck",
           "_blank",
-          "noopener,noreferrer"
+          "noopener,noreferrer",
         );
       }
       emit("update:modelValue", false);
@@ -109,7 +107,7 @@ const filteredActions = computed(() => {
     (action) =>
       action.title.toLowerCase().includes(query) ||
       action.category.toLowerCase().includes(query) ||
-      (action.subtitle && action.subtitle.toLowerCase().includes(query))
+      (action.subtitle && action.subtitle.toLowerCase().includes(query)),
   );
 });
 
@@ -123,7 +121,7 @@ watch(
         searchInputRef.value?.focus();
       });
     }
-  }
+  },
 );
 
 watch(searchQuery, () => {
@@ -202,7 +200,7 @@ const onKeydown = (e: KeyboardEvent) => {
             <Icon name="tabler:x" class="size-3.5" />
           </button>
           <kbd
-            class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-medium rounded border border-border dark:border-white/10 bg-surface dark:bg-white/5 text-muted shadow-2xs"
+            class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-medium rounded border border-border dark:border-white/10 bg-surface dark:bg-white/5 text-muted shadow-2xs trim-both"
           >
             ESC
           </kbd>
@@ -242,7 +240,9 @@ const onKeydown = (e: KeyboardEvent) => {
                 <Icon :name="action.icon" class="size-4" />
               </div>
               <div class="flex flex-col min-w-0">
-                <span class="text-xs sm:text-sm font-semibold truncate leading-tight">
+                <span
+                  class="text-xs sm:text-sm font-semibold truncate leading-tight"
+                >
                   {{ action.title }}
                 </span>
                 <span
@@ -257,14 +257,20 @@ const onKeydown = (e: KeyboardEvent) => {
             <!-- Shortcut Badge -->
             <div v-if="action.shortcut" class="shrink-0 flex items-center">
               <kbd
-                class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold border text-muted shadow-2xs"
+                class="px-2 py-1 rounded-sm text-[10px] font-mono font-bold border text-muted shadow-2xs inline-flex items-center gap-0.5 [&_span]:trim-both trim-both"
                 :class="[
                   selectedIndex === idx
                     ? 'border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300'
                     : 'border-border/80 dark:border-white/10 bg-surface dark:bg-white/5 text-muted',
                 ]"
               >
-                {{ action.shortcut }}
+                <template v-if="action.shortcut.includes('⌘')">
+                  <Icon name="tabler:command" class="size-[1.2em] shrink-0" />
+                  <span>{{ action.shortcut.replace("⌘", "") }}</span>
+                </template>
+                <template v-else>
+                  {{ action.shortcut }}
+                </template>
               </kbd>
             </div>
           </div>

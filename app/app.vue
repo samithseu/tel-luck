@@ -2,7 +2,7 @@
 const siteUrl = "https://tel-luck.samith.dev";
 const title = "Telephone Luck - ទស្សន៍ទាយលេខទូរសព្ទ";
 const desc =
-  "ទស្សន៍ទាយលេខទូរសព្ទតាមក្បួនតម្រាបុរាណ ៨០ ខ្ទង់ - Phone number numerology with instant calculation.";
+  "ទស្សន៍ទាយលេខទូរសព្ទតាមក្បួនតម្រាបុរាណ 80 ខ្ទង់ - Phone number numerology with instant calculation.";
 const authorDesc = "A web developer and lifelong learner.";
 const authorAltNames = [
   "Seu Samith",

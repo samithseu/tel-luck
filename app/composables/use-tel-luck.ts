@@ -1,9 +1,6 @@
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import type { LuckRating, LuckResult } from "~~/shared/types/tel-luck";
-import {
-  MIN_PHONE_DIGITS,
-  getLuckResult,
-} from "~~/shared/utils/tel-luck";
+import { MIN_PHONE_DIGITS, getLuckResult } from "~~/shared/utils/tel-luck";
 
 // ====================================================================
 // Module-level Singleton State (Shared across all components)

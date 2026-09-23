@@ -30,26 +30,38 @@ const emit = defineEmits<{
         class="relative w-full max-w-xs rounded-2xl bg-surface/95 dark:bg-[#18181b]/95 border border-border dark:border-white/10 p-5 sm:p-6 shadow-2xl backdrop-blur-2xl text-center space-y-3.5 ring-1 ring-black/5 dark:ring-white/10"
       >
         <!-- App Icon -->
-        <div class="relative mx-auto size-14 rounded-2xl bg-surface-elevated border border-border flex items-center justify-center shadow-md">
-          <KbachOrnament variant="medallion" class="size-10 drop-shadow-[0_2px_8px_rgba(245,158,11,0.3)]" />
+        <div
+          class="relative mx-auto size-14 rounded-2xl bg-surface-elevated border border-border flex items-center justify-center shadow-md"
+        >
+          <KbachOrnament
+            variant="medallion"
+            class="size-10 drop-shadow-[0_2px_8px_rgba(245,158,11,0.3)]"
+          />
         </div>
 
         <div>
-          <h3 class="text-lg font-bold text-foreground tracking-tight">tel-luck</h3>
+          <h3 class="text-lg font-bold text-foreground tracking-tight">
+            tel-luck
+          </h3>
           <p class="text-[11px] font-semibold text-muted mt-0.5">
             ជំនាន់ 2.0 (macOS Edition)
           </p>
         </div>
 
         <p class="text-xs text-muted leading-relaxed">
-          កម្មវិធីទស្សន៍ទាយលេខទូរសព្ទតាមក្បួនតម្រាបុរាណខ្មែរ ៨០ ខ្ទង់ ដោយប្រើប្រាស់ប្រមាណវិធីម៉ូឌុល (Modulo 80)។
+          កម្មវិធីទស្សន៍ទាយលេខទូរសព្ទតាមក្បួនតម្រាបុរាណខ្មែរ 80 ខ្ទង់
+          ដោយប្រើប្រាស់ប្រមាណវិធីម៉ូឌុល (Modulo 80)។
         </p>
 
         <!-- Developer Attribution -->
-        <div class="py-2 px-3 rounded-xl bg-surface-muted/50 dark:bg-white/3 border border-border/80 text-xs space-y-1">
+        <div
+          class="py-2 px-3 rounded-xl bg-surface-muted/50 dark:bg-white/3 border border-border/80 text-xs space-y-1"
+        >
           <div class="text-muted text-[11px]">បង្កើតឡើងដោយ</div>
           <div class="font-bold text-foreground">Samith Seu (ស៊ឺ សាមីត)</div>
-          <div class="flex items-center justify-center gap-3 pt-1 text-muted text-xs">
+          <div
+            class="flex items-center justify-center gap-3 pt-1 text-muted text-xs"
+          >
             <NuxtLink
               to="https://github.com/samithseu/tel-luck"
               target="_blank"

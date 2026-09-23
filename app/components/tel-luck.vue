@@ -173,12 +173,12 @@ onUnmounted(() => {
           <span
             class="text-xs font-semibold tracking-tight text-foreground/85 dark:text-foreground/75 font-sans"
           >
-            tel-luck
+            Telephone Luck
           </span>
           <span
             class="px-1 py-0.2 rounded text-[9px] font-semibold bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20 font-mono"
           >
-            ៨០
+            80
           </span>
         </div>
 
@@ -220,12 +220,13 @@ onUnmounted(() => {
               >
                 <span class="flex items-center gap-2">
                   <Icon name="tabler:command" class="size-3.5 text-amber-500" />
-                  <span>ផ្ទាំងបញ្ជា Raycast</span>
+                  <span>ផ្ទាំងបញ្ជា</span>
                 </span>
                 <kbd
-                  class="px-1.5 py-0.5 rounded-md text-[10px] font-mono font-bold bg-black/5 dark:bg-white/10 border border-black/5 dark:border-white/10 text-muted"
+                  class="px-1.5 py-0.5 rounded-sm text-[10px] font-mono font-bold bg-black/5 dark:bg-white/10 border border-black/5 dark:border-white/10 text-muted inline-flex items-center gap-0.5 [&_span]:trim-both"
                 >
-                  ⌘K
+                  <Icon name="tabler:command" class="size-[1.2em] shrink-0" />
+                  <span>K</span>
                 </kbd>
               </button>
 
@@ -294,7 +295,7 @@ onUnmounted(() => {
                   <span>សម្អាតលេខចេញ</span>
                 </span>
                 <kbd
-                  class="px-1.5 py-0.5 rounded-md text-[10px] font-mono font-bold bg-black/5 dark:bg-white/10 border border-black/5 dark:border-white/10 text-muted"
+                  class="px-1.5 py-1 rounded-sm text-[10px] font-mono font-bold bg-black/5 dark:bg-white/10 border border-black/5 dark:border-white/10 text-muted trim-both"
                 >
                   Esc
                 </kbd>
@@ -335,7 +336,7 @@ onUnmounted(() => {
           <p
             class="text-[11px] sm:text-xs text-muted mt-0.5 font-medium tracking-wide"
           >
-            គណនាជោគជតាតាមក្បួនតម្រាបុរាណខ្មែរ ៨០ ខ្ទង់
+            គណនាជោគជតាតាមក្បួនតម្រាបុរាណខ្មែរ 80 ខ្ទង់
           </p>
         </div>
 
@@ -456,7 +457,7 @@ onUnmounted(() => {
                     <button
                       type="button"
                       @click="copyResult"
-                      class="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl border border-border/80 dark:border-white/10 bg-surface hover:bg-surface-elevated hover:border-(--result-clr)/50 active:scale-95 transition-all text-foreground font-semibold text-[11px] shadow-2xs"
+                      class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md border border-border/80 dark:border-white/10 bg-surface hover:bg-surface-elevated hover:border-(--result-clr)/50 active:scale-95 transition-all text-foreground font-semibold text-[11px] shadow-2xs"
                       :aria-label="copied ? 'បានចម្លងរួចរាល់' : 'ចម្លងលទ្ធផល'"
                     >
                       <Icon
@@ -468,7 +469,18 @@ onUnmounted(() => {
                             : 'text-amber-600 dark:text-amber-400'
                         "
                       />
-                      <span>{{ copied ? "បានចម្លង!" : "ចម្លង (⌘C)" }}</span>
+                      <span v-if="copied">បានចម្លង!</span>
+                      <span
+                        v-else
+                        class="inline-flex items-center gap-0.5 *:trim-both"
+                      >
+                        <span>ចម្លង (</span>
+                        <Icon
+                          name="tabler:command"
+                          class="size-[1.2em] shrink-0"
+                        />
+                        <span>C)</span>
+                      </span>
                     </button>
                   </div>
                 </div>
@@ -603,9 +615,10 @@ onUnmounted(() => {
             />
             <span>{{ copied ? "បានចម្លង!" : "ចម្លង" }}</span>
             <kbd
-              class="ml-0.5 px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-black/5 dark:bg-white/8 border border-black/5 dark:border-white/10 text-muted"
+              class="px-1.5 py-1 rounded text-[10px] font-mono font-bold bg-black/6 dark:bg-black/40 text-foreground/80 dark:text-white/80 border border-black/5 dark:border-white/10 shadow-2xs group-hover:border-amber-500/30 transition-colors inline-flex items-center gap-0.5 [&_span]:trim-both"
             >
-              ⌘C
+              <Icon name="tabler:command" class="size-[1.2em] shrink-0" />
+              <span>C</span>
             </kbd>
           </button>
 
@@ -616,14 +629,15 @@ onUnmounted(() => {
             class="group h-7 sm:h-7.5 pl-2.5 pr-1.5 rounded-lg border border-border/80 dark:border-white/8 bg-surface dark:bg-white/5 hover:bg-surface-elevated hover:dark:bg-white/1 hover:border-amber-500/40 hover:dark:border-amber-400/30 active:scale-[0.96] transition-all duration-150 inline-flex items-center gap-2 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] text-[11px] font-semibold text-foreground/85 hover:text-foreground focus:outline-none"
             title="បើកផ្ទាំងបញ្ជា (⌘K)"
           >
-            <span class="flex items-center gap-1.5">
+            <span class="flex items-center gap-1">
               <Icon name="tabler:command" class="size-3.5 text-amber-500" />
-              <span>បញ្ជា</span>
+              <span class="trim-both">បញ្ជា</span>
             </span>
             <kbd
-              class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-black/6 dark:bg-black/40 text-foreground/80 dark:text-white/80 border border-black/5 dark:border-white/10 shadow-2xs group-hover:border-amber-500/30 transition-colors"
+              class="px-1.5 py-1 rounded text-[10px] font-mono font-bold bg-black/6 dark:bg-black/40 text-foreground/80 dark:text-white/80 border border-black/5 dark:border-white/10 shadow-2xs group-hover:border-amber-500/30 transition-colors inline-flex items-center gap-0.5 [&_span]:trim-both"
             >
-              ⌘K
+              <Icon name="tabler:command" class="size-[1.2em] shrink-0" />
+              <span>K</span>
             </kbd>
           </button>
         </div>
