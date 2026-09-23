@@ -24,7 +24,7 @@ const searchQuery = ref("");
 const selectedIndex = ref(0);
 const searchInputRef = ref<HTMLInputElement | null>(null);
 
-const { copyResult, clear, isAboutOpen } = useTelLuck();
+const { copyResult, clear, isAboutOpen, isCommandPaletteOpen } = useTelLuck();
 
 const actions = computed<RaycastAction[]>(() => [
   {
@@ -152,6 +152,8 @@ const onKeydown = (e: KeyboardEvent) => {
     }
   } else if (e.key === "Escape") {
     e.preventDefault();
+    e.stopPropagation();
+    isCommandPaletteOpen.value = false;
     emit("update:modelValue", false);
   }
 };

@@ -8,6 +8,7 @@ import { MIN_PHONE_DIGITS, getLuckResult } from "~~/shared/utils/tel-luck";
 const phoneInput = ref<string>("");
 const isCommandPaletteOpen = ref<boolean>(false);
 const isAboutOpen = ref<boolean>(false);
+const isMoreMenuOpen = ref<boolean>(false);
 const isMinimized = ref<boolean>(false);
 const isMaximized = ref<boolean>(false);
 const copied = ref<boolean>(false);
@@ -134,21 +135,30 @@ export const useTelLuck = () => {
   };
 
   const handleGlobalKeydown = (e: KeyboardEvent) => {
-    // Escape closes open modals or clears input
+    // Escape closes open modals or menus first, then clears input if nothing is open
     if (e.key === "Escape") {
       if (isCommandPaletteOpen.value) {
         isCommandPaletteOpen.value = false;
         e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+      if (isMoreMenuOpen.value) {
+        isMoreMenuOpen.value = false;
+        e.preventDefault();
+        e.stopPropagation();
         return;
       }
       if (isAboutOpen.value) {
         isAboutOpen.value = false;
         e.preventDefault();
+        e.stopPropagation();
         return;
       }
       if (phoneInput.value) {
         clear();
         e.preventDefault();
+        e.stopPropagation();
       }
       return;
     }
@@ -177,6 +187,7 @@ export const useTelLuck = () => {
     phoneInput,
     isCommandPaletteOpen,
     isAboutOpen,
+    isMoreMenuOpen,
     isMinimized,
     isMaximized,
     copied,

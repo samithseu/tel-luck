@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick } from "vue";
+import { ref, onMounted, onUnmounted, nextTick, watch } from "vue";
 
 const {
   phoneInput,
@@ -11,6 +11,7 @@ const {
   themeColor,
   isCommandPaletteOpen,
   isAboutOpen,
+  isMoreMenuOpen,
   isMinimized,
   isMaximized,
   copied,
@@ -19,7 +20,6 @@ const {
   clear,
 } = useTelLuck();
 
-const isMoreMenuOpen = ref(false);
 const moreMenuRef = ref<HTMLElement | null>(null);
 
 // Smooth height transition references
@@ -49,6 +49,10 @@ const handleWindowClose = () => {
     isCommandPaletteOpen.value = false;
     return;
   }
+  if (isMoreMenuOpen.value) {
+    isMoreMenuOpen.value = false;
+    return;
+  }
   if (isAboutOpen.value) {
     isAboutOpen.value = false;
     return;
@@ -57,6 +61,22 @@ const handleWindowClose = () => {
     clear();
   }
 };
+
+watch(isCommandPaletteOpen, (open) => {
+  if (!open && !isAboutOpen.value) {
+    nextTick(() => {
+      document.getElementById("phone-input")?.focus();
+    });
+  }
+});
+
+watch(isAboutOpen, (open) => {
+  if (!open && !isCommandPaletteOpen.value) {
+    nextTick(() => {
+      document.getElementById("phone-input")?.focus();
+    });
+  }
+});
 
 const handleClickOutside = (e: MouseEvent) => {
   if (
