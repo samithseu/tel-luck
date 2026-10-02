@@ -83,7 +83,14 @@ useHead({
   link: [
     { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
     { rel: "alternate icon", type: "image/x-icon", href: "/favicon.ico" },
+    { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     { rel: "canonical", href: siteUrl },
+  ],
+  meta: [
+    { name: "theme-color", content: "#09090b" },
+    { name: "mobile-web-app-capable", content: "yes" },
+    { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+    { name: "apple-mobile-web-app-title", content: "Tel-Luck" },
   ],
   script: [
     {
@@ -110,6 +117,7 @@ useSeoMeta({
 </script>
 
 <template>
+  <VitePwaManifest />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
