@@ -1,5 +1,7 @@
 allowBuilds:
   "@parcel/watcher": true
   esbuild: true
+minimumReleaseAgeExclude:
+  - '@types/node@22.20.5'
 packages:
   - "."
