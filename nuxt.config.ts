@@ -17,6 +17,9 @@ export default defineNuxtConfig({
   },
 
   experimental: {
+    early404: true,
+    prerenderErrorPages: true,
+    stripNeverHydratedData: true,
     payloadExtraction: false,
   },
 

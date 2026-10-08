@@ -1,6 +1,5 @@
-import { ref, computed, onMounted, onUnmounted } from "vue";
-import type { LuckRating, LuckResult } from "~~/shared/types/tel-luck";
-import { MIN_PHONE_DIGITS, getLuckResult } from "~~/shared/utils/tel-luck";
+import type { LuckRating, LuckResult } from "#shared/types/tel-luck";
+import { MIN_PHONE_DIGITS, getLuckResult } from "#shared/utils/tel-luck";
 
 // ====================================================================
 // Module-level Singleton State (Shared across all components)
@@ -172,7 +171,8 @@ export const useTelLuck = () => {
       isCommandPaletteOpen.value = !isCommandPaletteOpen.value;
     } else if (key === "c" && luckResult.value) {
       // Allow native copy if text is selected inside an input or document
-      const activeEl = typeof document !== "undefined" ? document.activeElement : null;
+      const activeEl =
+        typeof document !== "undefined" ? document.activeElement : null;
       const isInput =
         activeEl instanceof HTMLInputElement ||
         activeEl instanceof HTMLTextAreaElement;
