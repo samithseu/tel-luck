@@ -1,5 +1,46 @@
-import type { LuckRating, LuckResult } from "#shared/types/tel-luck";
+import type { LuckRating, LuckResult, RatingMeta } from "#shared/types/tel-luck";
 import { MIN_PHONE_DIGITS, getLuckResult } from "#shared/utils/tel-luck";
+
+// ====================================================================
+// Module-level Static Configuration & Metadata
+// ====================================================================
+export const RATING_META: Record<LuckRating, RatingMeta> = {
+  excellent: {
+    label: "ល្អណាស់",
+    icon: "tabler:sparkles",
+    badgeStyle:
+      "bg-emerald-500/15 text-emerald-900 dark:text-emerald-300 border-emerald-500/40",
+    colorHex: "#10b981",
+  },
+  good: {
+    label: "ល្អ",
+    icon: "tabler:circle-check",
+    badgeStyle:
+      "bg-blue-500/15 text-blue-900 dark:text-blue-300 border-blue-500/40",
+    colorHex: "#3b82f6",
+  },
+  normal: {
+    label: "ធម្មតា",
+    icon: "tabler:scale",
+    badgeStyle:
+      "bg-stone-500/15 text-stone-900 dark:text-stone-200 border-stone-500/40",
+    colorHex: "#78716c",
+  },
+  bad: {
+    label: "អាក្រក់",
+    icon: "tabler:alert-triangle",
+    badgeStyle:
+      "bg-orange-500/15 text-orange-950 dark:text-orange-300 border-orange-500/40",
+    colorHex: "#f97316",
+  },
+  terrible: {
+    label: "អាក្រក់ណាស់",
+    icon: "tabler:alert-octagon",
+    badgeStyle:
+      "bg-red-500/15 text-red-950 dark:text-red-300 border-red-500/40",
+    colorHex: "#ef4444",
+  },
+};
 
 // ====================================================================
 // Module-level Singleton State (Shared across all components)
@@ -39,46 +80,7 @@ export const useTelLuck = () => {
     luckResult.value ? `var(--clr-${rating.value})` : "var(--clr-gold)",
   );
 
-  const ratingMeta: Record<
-    string,
-    { label: string; icon: string; badgeStyle: string; colorHex: string }
-  > = {
-    excellent: {
-      label: "ល្អណាស់",
-      icon: "tabler:sparkles",
-      badgeStyle:
-        "bg-emerald-500/15 text-emerald-900 dark:text-emerald-300 border-emerald-500/40",
-      colorHex: "#10b981",
-    },
-    good: {
-      label: "ល្អ",
-      icon: "tabler:circle-check",
-      badgeStyle:
-        "bg-blue-500/15 text-blue-900 dark:text-blue-300 border-blue-500/40",
-      colorHex: "#3b82f6",
-    },
-    normal: {
-      label: "ធម្មតា",
-      icon: "tabler:scale",
-      badgeStyle:
-        "bg-stone-500/15 text-stone-900 dark:text-stone-200 border-stone-500/40",
-      colorHex: "#78716c",
-    },
-    bad: {
-      label: "អាក្រក់",
-      icon: "tabler:alert-triangle",
-      badgeStyle:
-        "bg-orange-500/15 text-orange-950 dark:text-orange-300 border-orange-500/40",
-      colorHex: "#f97316",
-    },
-    terrible: {
-      label: "អាក្រក់ណាស់",
-      icon: "tabler:alert-octagon",
-      badgeStyle:
-        "bg-red-500/15 text-red-950 dark:text-red-300 border-red-500/40",
-      colorHex: "#ef4444",
-    },
-  };
+  const ratingMeta = RATING_META;
 
   const copyResult = async () => {
     if (!luckResult.value) return;

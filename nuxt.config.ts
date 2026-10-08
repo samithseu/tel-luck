@@ -80,7 +80,16 @@ export default defineNuxtConfig({
   },
 
   icon: {
-    clientBundle: { scan: true },
+    clientBundle: {
+      scan: true,
+      icons: [
+        "tabler:sparkles",
+        "tabler:circle-check",
+        "tabler:scale",
+        "tabler:alert-triangle",
+        "tabler:alert-octagon",
+      ],
+    },
     serverBundle: "auto",
   },
 
